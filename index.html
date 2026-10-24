@@ -4,77 +4,348 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DreamToon | Read Your Dreams</title>
+  <meta name="theme-color" content="#100b1c">
+  <meta name="description" content="Read The Dream, an original school-life manhwa on DreamToon.">
+  <title>DreamToon — Stories Beyond Imagination</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #100d18;
-      color: white;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #100b1c;
+      --card: #1c142b;
+      --purple: #a855f7;
+      --light: #e9d5ff;
+      --muted: #b8abc9;
+      --border: #38244e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: #fff;
       font-family: Arial, sans-serif;
+      line-height: 1.6;
     }
-    header {
-      padding: 22px;
-      text-align: center;
-      background: #20152f;
-      border-bottom: 2px solid #9b5cff;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    header h1 { margin: 0; color: #c69aff; }
-    header p { color: #ddd; }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 7%;
+      background: #140e21;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--light);
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
     .hero {
-      padding: 55px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #261342, #100d18);
+      min-height: 450px;
+      padding: 65px 7%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      background:
+        radial-gradient(ellipse at 80% 40%, #49206c 0%, transparent 50%),
+        linear-gradient(135deg, #1c102d, #100b1c 70%);
     }
-    .hero h2 { font-size: 38px; }
-    .hero p { color: #ddd; }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #70449a;
+      border-radius: 30px;
+      padding: 5px 12px;
+      color: var(--light);
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #c084fc;
+    }
+
+    .hero p {
+      max-width: 480px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
     .button {
       display: inline-block;
-      padding: 12px 24px;
-      background: #a855f7;
+      padding: 12px 22px;
+      border-radius: 9px;
+      background: var(--purple);
       color: white;
-      text-decoration: none;
-      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #9333ea;
+      transform: translateY(-2px);
+    }
+
+    .hero-art {
+      width: 100%;
+      max-width: 420px;
+      justify-self: center;
+      border-radius: 18px;
+      border: 1px solid #75459c;
+      box-shadow: 0 0 45px #8b35d533;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .hero-art img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .section {
+      padding: 55px 7%;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-size: 28px;
+    }
+
+    .section-heading span {
+      color: #c084fc;
+    }
+
+    .episode-card {
+      max-width: 360px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: 0.25s;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--purple);
+      box-shadow: 0 12px 35px #0005;
+    }
+
+    .episode-image {
+      height: 210px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #35204e, #171020);
+    }
+
+    .episode-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .episode-info {
+      padding: 20px;
+    }
+
+    .episode-number {
+      color: #c084fc;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .episode-info h3 {
+      font-size: 22px;
+      margin: 5px 0;
+    }
+
+    .episode-info p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .read-link {
+      color: var(--light);
       font-weight: bold;
     }
-    main { max-width: 850px; margin: auto; padding: 24px; }
-    .chapter {
-      background: #201a2c;
-      padding: 22px;
-      border-radius: 12px;
-      border: 1px solid #49345f;
-      margin: 16px 0;
+
+    .read-link:hover {
+      color: var(--purple);
     }
-    .chapter h3 { color: #d0aaff; }
-    footer { text-align: center; padding: 25px; color: #aaa; }
+
+    .about {
+      margin: 0 7% 55px;
+      padding: 30px;
+      background: linear-gradient(135deg, #21152f, #171020);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .about h2 {
+      margin-bottom: 10px;
+    }
+
+    .about p {
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #9d8eaf;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 15px 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 6%;
+        gap: 30px;
+      }
+
+      .hero-art {
+        max-width: 340px;
+      }
+
+      .section {
+        padding: 40px 6%;
+      }
+
+      .episode-card {
+        max-width: 100%;
+      }
+
+      .about {
+        margin: 0 6% 40px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>🌙 DreamToon</h1>
-    <p>Your next favourite story begins here.</p>
-  </header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">DREAM<span>TOON</span></a>
 
-  <section class="hero">
-    <h2>Enter Your Dream</h2>
-    <p>Discover original manhwa stories and unforgettable adventures.</p>
-    <a class="button" href="#stories">Explore Stories ↓</a>
-  </section>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#episodes">Episodes</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
 
-  <main id="stories">
-    <h2>📚 Featured Manhwa</h2>
-    <div class="chapter">
-      <h3>🌌 The Dream</h3>
-      <p>A mysterious classroom. Unexpected encounters. A story waiting to unfold.</p>
-     <p><strong>Episode 1</strong></p>
-<a class="button" href="episode1.html">READ NOW →</a>
-    </div>
-    <div class="chapter">
-      <h3>✨ More Stories</h3>
-      <p>More original manhwa will be featured here soon.</p>
-    </div>
+  <main>
+    <section class="hero">
+      <div>
+        <span class="tag">YOUR NEXT OBSESSION STARTS HERE</span>
+
+        <h1>Enter the<br><span>Dream.</span></h1>
+
+        <p>
+          Every dream has a beginning. Discover THE DREAM,
+          an original school-life story where an ordinary day
+          can change everything.
+        </p>
+
+        <a class="button" href="episode1.html">Read Episode 1 →</a>
+      </div>
+
+      <div class="hero-art">
+        <img src="manwha.webp" alt="THE DREAM manhwa artwork">
+      </div>
+    </section>
+
+    <section class="section" id="episodes">
+      <div class="section-heading">
+        <h2>Featured <span>Story</span></h2>
+      </div>
+
+      <a href="episode1.html" class="episode-card">
+        <div class="episode-image">
+          <img src="manwha.webp" alt="THE DREAM episode artwork">
+        </div>
+
+        <div class="episode-info">
+          <div class="episode-number">ORIGINAL SERIES · EPISODE 01</div>
+          <h3>THE DREAM</h3>
+          <p>A normal day at school was about to become something unforgettable.</p>
+          <span class="read-link">Start Reading →</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="about" id="about">
+      <h2>Welcome to DreamToon ✨</h2>
+      <p>
+        A home for original stories, unforgettable characters,
+        and worlds waiting to be discovered. This is only the beginning.
+      </p>
+    </section>
   </main>
 
-  <footer>© 2026 DreamToon · Original stories, endless dreams.</footer>
+  <footer>
+    © 2026 DreamToon · Original stories, endless imagination.
+  </footer>
 </body>
 </html>
