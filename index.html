@@ -544,90 +544,66 @@ body {
 }
 
 
-/* DREAMTOON — ANIME GALAXY + DREAM MAGIC */
+
+/* DREAMTOON — ANIMATED GALAXY */
 
 body {
-  background-color: #05030b;
+  position: relative;
+  isolation: isolate;
+  background-color: #05020c;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
   background-image:
-    radial-gradient(
-      ellipse at 15% 25%,
-      rgba(100, 35, 180, 0.35),
-      transparent 48%
-    ),
-    radial-gradient(
-      ellipse at 85% 65%,
-      rgba(190, 35, 130, 0.22),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(65, 30, 120, 0.16),
-      transparent 65%
-    ),
-    radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.85) 1px,
-      transparent 1.8px
-    ),
-    radial-gradient(
-      circle,
-      rgba(205, 155, 255, 0.8) 1.2px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle,
-      rgba(255, 120, 220, 0.7) 1px,
-      transparent 2px
-    );
+    radial-gradient(ellipse at 20% 25%,
+      rgba(130, 35, 255, 0.48), transparent 48%),
+    radial-gradient(ellipse at 80% 70%,
+      rgba(255, 35, 175, 0.30), transparent 45%),
+    radial-gradient(circle,
+      #ffffff 1.4px, transparent 2px),
+    radial-gradient(circle,
+      #d5a5ff 1.5px, transparent 2.5px),
+    radial-gradient(circle,
+      #ff8be8 1.2px, transparent 2px);
 
   background-size:
     100% 100%,
     100% 100%,
-    100% 100%,
-    95px 95px,
-    145px 145px,
-    190px 190px;
+    75px 75px,
+    115px 115px,
+    165px 165px;
 
   background-position:
-    0 0,
-    100% 100%,
-    50% 50%,
-    0 0,
-    35px 65px,
-    80px 20px;
+    0 0, 100% 100%, 0 0, 30px 50px, 70px 15px;
 
-  background-attachment: fixed;
-  animation: dreamGalaxy 24s linear infinite;
+  animation: dreamStarDrift 18s linear infinite;
 }
 
-@keyframes dreamGalaxy {
-  0% {
+@keyframes dreamStarDrift {
+  from {
     background-position:
-      0 0, 100% 100%, 50% 50%,
-      0 0, 35px 65px, 80px 20px;
+      0 0, 100% 100%, 0 0, 30px 50px, 70px 15px;
   }
 
-  50% {
+  to {
     background-position:
-      3% 2%, 96% 98%, 48% 52%,
-      95px 47px, 105px 10px, 15px 115px;
-  }
-
-  100% {
-    background-position:
-      6% 4%, 92% 96%, 46% 54%,
-      190px 95px, 180px -45px, -50px 210px;
+      8% 5%, 92% 95%, 150px 150px,
+      260px -100px, -100px 260px;
   }
 }
 
-/* Let the galaxy show through the latest-episodes area */
 .latest {
-  background: rgba(14, 13, 23, 0.55);
+  background: rgba(14, 13, 23, 0.35);
 }
 
-/* Respect reduced-motion settings */
 @media (prefers-reduced-motion: reduce) {
-  body {
+  body::before {
     animation: none;
   }
 }
