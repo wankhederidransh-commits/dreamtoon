@@ -1,45 +1,340 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE DREAM — Episode 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090910">
+  <title>THE DREAM — Episode 1 | DreamToon</title>
   <style>
-    body {
+    :root {
+      --bg: #090910;
+      --panel: #151322;
+      --purple: #a78bfa;
+      --pink: #f0abfc;
+      --text: #f5f3ff;
+      --muted: #aaa7bd;
+      --border: #30283e;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 24px;
-      background: #100b1d;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .progress-track {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #242033;
+    }
+
+    #progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    header {
+      position: sticky;
+      top: 4px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 15px 6%;
+      background: #0b0a13ed;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span,
+    .gradient {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .back {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back:hover {
       color: white;
-      font-family: Arial, sans-serif;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 55px 20px 35px;
+      background: radial-gradient(ellipse at top, #56328b40, transparent 70%);
+    }
+
+    .tag {
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: clamp(35px, 7vw, 58px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reader {
+      width: min(100% - 28px, 780px);
+      margin: 0 auto;
+      padding-bottom: 30px;
+    }
+
+    .reader-note {
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
       text-align: center;
     }
-    h1 { color: #d9a5ff; }
-    .comic {
-      max-width: 800px;
-      margin: 30px auto;
+
+    .comic-image {
+      overflow: hidden;
+      background: #11101a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 15px 50px #0005;
     }
-    .comic img {
+
+    .comic-image img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 8px;
     }
-    a { color: #d9a5ff; }
+
+    .story-break {
+      padding: 35px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .story-break .symbol {
+      color: var(--pink);
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .story-break h2 {
+      color: var(--text);
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .story-break p {
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 14px;
+    }
+
+    .reader-controls {
+      width: min(100% - 28px, 780px);
+      margin: 0 auto 55px;
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .reader-controls h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .reader-controls p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 17px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      border: 1px solid #514668;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: #100b1d;
+      border: none;
+    }
+
+    .button:hover {
+      filter: brightness(1.12);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    footer span {
+      color: var(--purple);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 13px 5%;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .back {
+        font-size: 12px;
+      }
+
+      .reader {
+        width: calc(100% - 16px);
+      }
+
+      .reader-controls {
+        width: calc(100% - 24px);
+        padding: 17px;
+      }
+
+      .comic-image {
+        border-radius: 7px;
+      }
+    }
   </style>
 </head>
-<body>
-  <h1>THE DREAM</h1>
-  <h2>Episode 1</h2>
-  <p>Every dream begins somewhere...</p>
 
-  <div class="comic">
-    <img src="the-dream-episode1.jpg" alt="THE DREAM Episode 1 comic">
+<body>
+  <div class="progress-track" aria-hidden="true">
+    <div id="progress"></div>
   </div>
 
-  <h2>A STRANGE FEELING</h2>
-  <p>The classroom felt different today. Something was about to change.</p>
+  <header>
+    <a class="logo" href="index.html">Dream<span>Toon.</span></a>
+    <a class="back" href="index.html">← Back to Home</a>
+  </header>
 
-  <p><a href="index.html">← Back to home</a></p>
+  <main>
+    <section class="intro">
+      <div class="tag">DREAMTOON ORIGINAL</div>
+      <h1>THE <span class="gradient">DREAM</span></h1>
+      <p class="subtitle">Episode 01 · The Beginning</p>
+    </section>
+
+    <section class="reader" aria-label="Comic reader">
+      <div class="reader-note">
+        📖 Scroll down to read · Enjoy the story!
+      </div>
+
+      <div class="comic-image">
+        <img
+          src="the-dream-episode1.jpg"
+          alt="THE DREAM — Episode 1 comic artwork"
+        >
+      </div>
+
+      <div class="story-break">
+        <div class="symbol">✦</div>
+        <h2>The story continues...</h2>
+        <p>
+          Every dream has a beginning. Every mystery has a first clue.
+          Keep an eye out for the next episode of THE DREAM.
+        </p>
+      </div>
+    </section>
+
+    <section class="reader-controls">
+      <h2>You've reached the end of Episode 1!</h2>
+      <p>Thanks for reading THE DREAM on DreamToon.</p>
+
+      <div class="buttons">
+        <a class="button" href="index.html">← All Stories</a>
+        <a class="button primary" href="index.html#episodes">
+          Explore Episodes →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 <span>DreamToon</span> · Keep dreaming. Keep reading.
+  </footer>
+
+  <script>
+    function updateProgress() {
+      const page = document.documentElement;
+      const available = page.scrollHeight - page.clientHeight;
+      const percent = available > 0
+        ? (page.scrollTop / available) * 100
+        : 0;
+
+      document.getElementById("progress").style.width =
+        Math.min(100, Math.max(0, percent)) + "%";
+    }
+
+    window.addEventListener("scroll", updateProgress, {
+      passive: true
+    });
+
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  </script>
 </body>
 </html>
-
