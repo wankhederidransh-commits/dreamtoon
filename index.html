@@ -418,7 +418,128 @@
       .nav-links a {
         font-size: 11px;
       }
-    }
+    
+/* ===== DREAMTOON VISUAL UPGRADE ===== */
+
+/* Soft purple and pink ambient lighting */
+body {
+  background-image:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(112, 42, 180, 0.16),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 85% 45%,
+      rgba(236, 72, 153, 0.09),
+      transparent 42%
+    );
+  background-attachment: fixed;
+}
+
+/* Cinematic hero entrance */
+.hero-content {
+  animation: dreamFadeIn 1s ease-out both;
+}
+
+.hero-art {
+  animation: dreamFadeIn 1.2s ease-out both;
+}
+
+/* Beautiful glowing text */
+.gradient-text {
+  text-shadow: 0 0 28px rgba(168, 85, 247, 0.18);
+}
+
+/* Smooth interactive story card */
+.story-card {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 45px rgba(139, 92, 246, 0.18);
+}
+
+/* Episode cards rise when hovered */
+.episode {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.episode:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.13);
+}
+
+/* Gentle glow on main buttons */
+.button,
+.nav-cta {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.button:hover,
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.3);
+  filter: brightness(1.12);
+}
+
+/* Artwork zooms slightly on hover */
+.story-cover img,
+.hero-art img {
+  transition: transform 0.45s ease;
+}
+
+.story-card:hover .story-cover img,
+.hero-art:hover img {
+  transform: scale(1.035);
+}
+
+/* Smooth entrance animation */
+@keyframes dreamFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-art {
+    animation: none;
+  }
+
+  .story-card,
+  .episode,
+  .button,
+  .nav-cta,
+  .story-cover img,
+  .hero-art img {
+    transition: none;
+  }
+
+  .story-card:hover,
+  .episode:hover,
+  .button:hover,
+  .nav-cta:hover {
+    transform: none;
+  }
+}
+
   </style>
 </head>
 
