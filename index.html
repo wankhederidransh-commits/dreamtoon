@@ -545,11 +545,8 @@ body {
 
 
 
-/* DREAMTOON — ANIMATED GALAXY */
-
 body {
   position: relative;
-  isolation: isolate;
   background-color: #05020c;
 }
 
@@ -557,57 +554,26 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
-
   background-image:
     radial-gradient(ellipse at 20% 25%,
       rgba(130, 35, 255, 0.48), transparent 48%),
     radial-gradient(ellipse at 80% 70%,
       rgba(255, 35, 175, 0.30), transparent 45%),
-    radial-gradient(circle,
-      #ffffff 1.4px, transparent 2px),
-    radial-gradient(circle,
-      #d5a5ff 1.5px, transparent 2.5px),
-    radial-gradient(circle,
-      #ff8be8 1.2px, transparent 2px);
-
+    radial-gradient(circle, #fff 1.4px, transparent 2px),
+    radial-gradient(circle, #d5a5ff 1.5px, transparent 2.5px),
+    radial-gradient(circle, #ff8be8 1.2px, transparent 2px);
   background-size:
-    100% 100%,
-    100% 100%,
-    75px 75px,
-    115px 115px,
-    165px 165px;
-
-  background-position:
-    0 0, 100% 100%, 0 0, 30px 50px, 70px 15px;
-
+    100% 100%, 100% 100%, 75px 75px, 115px 115px, 165px 165px;
+  background-position: 0 0, 100% 100%, 0 0, 30px 50px, 70px 15px;
   animation: dreamStarDrift 18s linear infinite;
 }
 
-@keyframes dreamStarDrift {
-  from {
-    background-position:
-      0 0, 100% 100%, 0 0, 30px 50px, 70px 15px;
-  }
-
-  to {
-    background-position:
-      8% 5%, 92% 95%, 150px 150px,
-      260px -100px, -100px 260px;
-  }
+body > * {
+  position: relative;
+  z-index: 1;
 }
-
-.latest {
-  background: rgba(14, 13, 23, 0.35);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before {
-    animation: none;
-  }
-}
-
   </style>
 </head>
 
